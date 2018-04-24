@@ -1,0 +1,59 @@
+//En TinkerCad: https://www.tinkercad.com/things/215MyvJ9ort#/
+
+const int Pin_del_Sensor = A0;
+const float Temperatura_de_referencia	= 20.0;
+
+int led1=3;
+int led2=4;
+int led3=5;
+
+void setup(){
+	Serial.begin(9600);
+
+    pinMode( led1,OUTPUT);
+    digitalWrite(led1,LOW);
+
+  	pinMode( led2,OUTPUT);
+    digitalWrite(led2,LOW);
+
+  	pinMode( led3,OUTPUT);
+    digitalWrite(led3,LOW);
+  }
+
+void loop(){
+	int Valor_del_Sensor = analogRead(Pin_del_Sensor);
+  	Serial.print("Valor del sensor: ");
+  	Serial.println(Valor_del_Sensor);
+  	float Tension = (Valor_del_Sensor/1024.0)*5.0;
+  	Serial.print("Voltios: ");
+  	Serial.println(Tension);
+  	float Temperatura=(Tension-0.5)*100;
+  	Serial.print("Temperatura: ");
+  	Serial.println(Temperatura);
+
+  	if( Temperatura<Temperatura_de_referencia ){
+      Serial.println("LLL");
+  		digitalWrite(led1,LOW);
+    	digitalWrite(led2,LOW);
+  		digitalWrite(led3,LOW);
+    } else if( Temperatura>=Temperatura_de_referencia
+             && Temperatura<=Temperatura_de_referencia+2){
+  		Serial.println("HLL");
+      digitalWrite(led1,HIGH);
+    	digitalWrite(led2,LOW);
+  		digitalWrite(led3,LOW);
+   } else if( Temperatura>=Temperatura_de_referencia+2
+             && Temperatura<=Temperatura_de_referencia+4){
+  		Serial.println("HHL");
+      digitalWrite(led1,HIGH);
+    	digitalWrite(led2,HIGH);
+  		digitalWrite(led3,LOW);
+
+
+    } else if( Temperatura>=Temperatura_de_referencia+4){
+  	Serial.println("HHH");
+      digitalWrite(led1,HIGH);
+    	digitalWrite(led2,HIGH);
+  		digitalWrite(led3,HIGH);
+    }
+}

@@ -1,0 +1,32 @@
+//En TincerCad: https://www.tinkercad.com/things/8CyDqCi7914
+
+
+int switchState=0;
+int led1=3;
+int led2=4;
+int led3=5;
+int boton=2;
+void setup(){
+  pinMode(led1, OUTPUT);
+  pinMode(led2, OUTPUT);
+  pinMode(led3, OUTPUT);
+  pinMode(boton, INPUT);
+  }
+void loop(){
+switchState = digitalRead(boton);
+
+  if(switchState==LOW){
+    digitalWrite(led1,HIGH);
+    digitalWrite(led2,LOW);
+    digitalWrite(led3,LOW);
+  }
+  else{
+  digitalWrite(led1,LOW);
+    digitalWrite(led2,LOW);
+    digitalWrite(led3,HIGH);
+    delay(250);
+    digitalWrite(led2,HIGH);
+    digitalWrite(led3,LOW);
+    delay(250);
+    }
+}
