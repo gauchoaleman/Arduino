@@ -1,4 +1,4 @@
-//En TinkerCad: //En TinkerCad: https://www.tinkercad.com/things/8CyDqCi7914
+//En TinkerCad: https://www.tinkercad.com/things/9bYBxmKNrq8-ejercicio-05-pag-63
 
 #include <Servo.h>
 Servo MiServo;
